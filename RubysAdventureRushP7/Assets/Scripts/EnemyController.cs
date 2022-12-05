@@ -12,11 +12,15 @@ public class EnemyController : MonoBehaviour
     float timer;
     int direction = 1;
 
+    Animator animator;
+
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
+        timer = changeTime;
+        animator = GetComponent<animator>();
     }
 
     void Update()
@@ -48,14 +52,15 @@ public class EnemyController : MonoBehaviour
         rigidbody2D.MovePosition(position);
 
     }
-    void OnCollisionEnter2D(Collision2d other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        RubyController player = oither.gameObject.GetComponent<RubyController>();
+        RubyController player = other.gameObject.GetComponent<RubyController>();
 
         if (player != null)
         {
             player.ChangeHealth(-1);
         }
 
+       
     }
 }
