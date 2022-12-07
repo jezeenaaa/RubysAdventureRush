@@ -20,14 +20,12 @@ public class RubyController : MonoBehaviour
     float vertical;
 
     Animator animator;
-    Vector2 lookDirection = new Vector2(1, 0);
+    Vector2 lookDirection = new Vector2(1,0);
 
     // Start is called before the first frame update
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
-
-        currentHealth = maxHealth;
 
         currentHealth = maxHealth;
 
@@ -38,8 +36,8 @@ public class RubyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {   // create variables to use the built in axis
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        horizontal = Input.GetAxis("Horizontal");
+        vertical = Input.GetAxis("Vertical");
 
         Vector2 move = new Vector2(horizontal, vertical);
 
@@ -61,6 +59,7 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
         }
 
+       
 
     }
 
@@ -95,6 +94,8 @@ public class RubyController : MonoBehaviour
         Debug.Log(currentHealth + "/" + maxHealth);
        
     }
-  
+    
+   
+    
     
 }
