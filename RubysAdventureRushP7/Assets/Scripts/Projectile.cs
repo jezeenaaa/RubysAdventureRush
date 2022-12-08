@@ -18,7 +18,7 @@ public class Projectile : MonoBehaviour
         rigidbody2d.AddForce(direction * force);
     }
 
-    void OnCollisionEnter2D(Collision other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Projectile Collision with" + other.gameObject);
         Destroy(gameObject);
