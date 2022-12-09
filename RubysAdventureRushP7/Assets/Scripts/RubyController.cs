@@ -18,6 +18,7 @@ public class RubyController : MonoBehaviour
     Rigidbody2D rigidbody2d;
     float horizontal;
     float vertical;
+    public GameObject projectilePrefab;
 
     Animator animator;
     Vector2 lookDirection = new Vector2(1,0);
@@ -63,6 +64,8 @@ public class RubyController : MonoBehaviour
         {
             Launch();
         }
+
+       
        
 
     }
@@ -99,7 +102,7 @@ public class RubyController : MonoBehaviour
        
     }
     
-   void Launch()
+    void Launch()
     {
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
         Projectile projectile = projectileObject.GetComponent<Projectile>();
@@ -107,6 +110,6 @@ public class RubyController : MonoBehaviour
 
         animator.SetTrigger("Launch");
     }
-    
+
     
 }
