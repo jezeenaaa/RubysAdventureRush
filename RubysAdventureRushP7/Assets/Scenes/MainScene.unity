@@ -4205,7 +4205,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.1021612, y: 1}
+    m_SensorSize: {x: 2.0868726, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -58871,6 +58871,7 @@ GameObject:
   - component: {fileID: 1786955578}
   - component: {fileID: 1786955577}
   - component: {fileID: 1786955579}
+  - component: {fileID: 1786955580}
   m_Layer: 5
   m_Name: Mask
   m_TagString: Untagged
@@ -58950,6 +58951,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
+--- !u!114 &1786955580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786955575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dd37d230a2dbac4c863402abee668ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mask: {fileID: 0}
 --- !u!1001 &1795660576
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -63027,6 +63041,10 @@ PrefabInstance:
     - target: {fileID: 7528706455516712376, guid: efa5686ad76b61142b11a20bfff457c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7528706455516712378, guid: efa5686ad76b61142b11a20bfff457c8, type: 3}
+      propertyPath: currentHealth
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7528706455516712378, guid: efa5686ad76b61142b11a20bfff457c8, type: 3}
       propertyPath: projectilePrefab
