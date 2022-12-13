@@ -31,7 +31,7 @@ public class Projectile : MonoBehaviour
     }
     void Update()
     {
-        if (transform.position.magnitude > 100.0f)
+        if (transform.position.magnitude > 1000.0f)
         {
             Destroy(gameObject);
         }
