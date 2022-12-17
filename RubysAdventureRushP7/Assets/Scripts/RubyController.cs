@@ -23,6 +23,12 @@ public class RubyController : MonoBehaviour
     Animator animator;
     Vector2 lookDirection = new Vector2(1, 0);
 
+    AudioSource audioSource;
+
+    public AudioClip throwCogClip;
+    public AudioClip takeDamageClip;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +36,15 @@ public class RubyController : MonoBehaviour
         animator = GetComponent<Animator>();
 
         currentHealth = maxHealth;
+
+            currentHealth = 5;
+
+        audioSource = GetComponent<AudioSource>();
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 
     // Update is called once per frame
@@ -61,7 +76,18 @@ public class RubyController : MonoBehaviour
         {
             Launch();
         }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, lookDirection, 1.5f,
+                LayerMask.GetMask("NPC"));
+
+            if (hit.collider != null)
+            {
+                Debug.Log("Raycast has hit the object" + hit.collider.gameObject);
+            }
+        }
     }
+
 
     void FixedUpdate()
     {
@@ -81,9 +107,12 @@ public class RubyController : MonoBehaviour
 
             isInvincible = true;
             invincibleTimer = timeInvincible;
+
+            audioSource.PlayOneShot(takeDamageClip);
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
+        Debug.Log(currentHealth + "/" + maxHealth);
 
         UIHealthBar.instance.SetValue(currentHealth / (float)maxHealth);
     }
@@ -93,8 +122,8 @@ public class RubyController : MonoBehaviour
         GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
 
         Projectile projectile = projectileObject.GetComponent<Projectile>();
-        projectile.Launch(lookDirection, 300);
-
+        projectile.Launch(lookDirection, 300.0f);
+        audioSource.PlayOneShot(throwCogClip);
         animator.SetTrigger("Launch");
     }
 }

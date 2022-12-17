@@ -11,9 +11,12 @@ public class EnemyController : MonoBehaviour
     Rigidbody2D rigidbody2D;
     float timer;
     int direction = 1;
-    bool broken = true;
+    public bool broken = true;
 
     Animator animator;
+    AudioSource audioSource;
+
+    public AudioClip robotFixed;
 
 
     // Start is called before the first frame update
@@ -22,6 +25,7 @@ public class EnemyController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -82,6 +86,9 @@ public class EnemyController : MonoBehaviour
     {
         broken = false;
         rigidbody2D.simulated = false;
+        animator.SetTrigger("Fixed");
+        audioSource.Stop();
+        audioSource.PlayOneShot(robotFixed);
     }
 
 }
