@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     float timer;
     int direction = 1;
     public bool broken = true;
+    public ParticleSystem smokeEffect;
 
     Animator animator;
     AudioSource audioSource;
@@ -89,6 +90,8 @@ public class EnemyController : MonoBehaviour
         animator.SetTrigger("Fixed");
         audioSource.Stop();
         audioSource.PlayOneShot(robotFixed);
+        smokeEffect.Stop();
+        
     }
 
 }
